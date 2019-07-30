@@ -10,5 +10,11 @@ head(riceml)
 
 
 criceml <- mlogit(choice ~ frog + bird + fish + location1 + cultivation1 + price | 0 | 0, data = riceml)
-criceml <- mlogit(choice ~  asc +frog + bird + fish + location1 + cultivation1 + price | 0 | 0, data = riceml)
+criceml <- mlogit(choice ~ asc + frog + bird + fish + location1 + cultivation1 + price | 0 | 0, data = riceml)
 
+
+# Tried clogit instead of mlogit
+library("clogit")
+library(survival)
+ricedata <-read.csv("/Users/kiran/Desktop/DI998 Dissertation/DataAnalysis/rice_ce/ce_complete.csv")
+criceml1 <- clogit(choice ~ asc + frog + bird + fish + location1 + cultivation1 + price + strata(STR), data = riceml)
