@@ -27,3 +27,23 @@ criceml2 <- clogit(choice ~ asc + frog + fish + location1 + cultivation1 + price
 summary(criceml2)
 
 
+## price:male
+rice_demo <- read.csv("/Users/kiran/Desktop/DI998 Dissertation/DataAnalysis/rice_ce/ce_demographic_complete.csv")
+criceml4 <- clogit(choice ~ asc + frog + fish + location1 + cultivation1 + price + price:male +strata(STR), data = rice_demo)
+summary(criceml4)
+
+##price:none
+rice_demo <- read.csv("/Users/kiran/Desktop/DI998 Dissertation/DataAnalysis/rice_ce/ce_demographic_complete.csv")
+criceml5 <- clogit(choice ~ asc + frog + fish + location1 + cultivation1 + price + price:none +strata(STR), data = rice_demo)
+summary(criceml5)
+
+##price:ricebuyer1 price:ricebuyer2 price:ricebuyer3
+rice_demo <- read.csv("/Users/kiran/Desktop/DI998 Dissertation/DataAnalysis/rice_ce/ce_demographic_complete.csv")
+criceml6 <- clogit(choice ~ asc + frog + fish + location1 + cultivation1 + price + price:rice_buyer1 + price:rice_buyer2 + price:rice_buyer3 +strata(STR), data = rice_demo)
+summary(criceml6)
+
+##price:rice_frequency
+rice_demo <- read.csv("/Users/kiran/Desktop/DI998 Dissertation/DataAnalysis/rice_ce/ce_demographic_complete.csv")
+rice_demo$rice_frequency <-as.factor(rice_demo$rice_frequency) 
+criceml7 <- clogit(choice ~ asc + frog + fish + location1 + cultivation1 + price + price:+rice_frequency + strata(STR), data = rice_demo)
+summary(criceml7)
