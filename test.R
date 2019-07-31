@@ -8,7 +8,6 @@ str(ricedata)
 riceml <- mlogit.data(ricedata, choice = "choice", shape = "long", alt.levels = c("alt1", "alt2", "alt3"))
 head(riceml)
 
-
 criceml <- mlogit(choice ~ frog + bird + fish + location1 + cultivation1 + price | 0 | 0, data = riceml)
 criceml <- mlogit(choice ~ asc + frog + bird + fish + location1 + cultivation1 + price | 0 | 0, data = riceml)
 
@@ -20,7 +19,7 @@ ricedata <-read.csv("/Users/kiran/Desktop/DI998 Dissertation/DataAnalysis/rice_c
 criceml1 <- clogit(choice ~ asc + frog + bird + fish + location1 + cultivation1 + price + strata(STR), data = riceml)
 summary(criceml1)
 
-
+#replaced bird with fish
 library(survival)
 ricedata <-read.csv("/Users/kiran/Desktop/DI998 Dissertation/DataAnalysis/rice_ce/ce_complete.csv")
 criceml2 <- clogit(choice ~ asc + frog + fish + location1 + cultivation1 + price + strata(STR), data = riceml)
@@ -45,5 +44,5 @@ summary(criceml6)
 ##price:rice_frequency
 rice_demo <- read.csv("/Users/kiran/Desktop/DI998 Dissertation/DataAnalysis/rice_ce/ce_demographic_complete.csv")
 rice_demo$rice_frequency <-as.factor(rice_demo$rice_frequency) 
-criceml7 <- clogit(choice ~ asc + frog + fish + location1 + cultivation1 + price + price:+rice_frequency + strata(STR), data = rice_demo)
+criceml7 <- clogit(choice ~  age + strata(STR), data = rice_demo[!is.na(rice_demo$age),])
 summary(criceml7)
