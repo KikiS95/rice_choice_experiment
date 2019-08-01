@@ -15,7 +15,7 @@ criceml <- mlogit(choice ~ asc + frog + bird + fish + location1 + cultivation1 +
 # Tried clogit instead of mlogit
 
 library(survival)
-ricedata <-read.csv("/Users/kiran/Desktop/DI998 Dissertation/DataAnalysis/rice_ce/ce_complete.csv")
+ricedata <-read.csv("/Users/kiran/Desktop/DI998 Dissertation/DataAnalysis/rice_ce/ce_demographic_complete.csv")
 criceml1 <- clogit(choice ~ asc + frog + bird + fish + location1 + cultivation1 + price + strata(STR), data = riceml)
 summary(criceml1)
 
@@ -44,5 +44,5 @@ summary(criceml6)
 ##price:rice_frequency
 rice_demo <- read.csv("/Users/kiran/Desktop/DI998 Dissertation/DataAnalysis/rice_ce/ce_demographic_complete.csv")
 rice_demo$rice_frequency <-as.factor(rice_demo$rice_frequency) 
-criceml7 <- clogit(choice ~  age + strata(STR), data = rice_demo[!is.na(rice_demo$age),])
+criceml7 <- clogit(choice ~ asc + frog + fish + location1 + cultivation1 + price + rice_frequency + price:rice_frequency + strata(STR), data = rice_demo[!is.na(rice_demo$age),])
 summary(criceml7)
