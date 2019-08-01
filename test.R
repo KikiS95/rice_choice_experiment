@@ -16,7 +16,7 @@ riceml <- mlogit::mlogit.data(rice, choice = "choice", shape = "long",alt.levels
 criceml <- mlogit::mlogit(choice ~ frog + bird + fish + location1 + cultivation1 + price | 0 | 0, data =riceml )
 summary(criceml)
 
-criceml <- mlogit::mlogit(choice ~ as.factor(alt) + frog + bird + fish + location1 + cultivation1 + price | 0 | 0, data = riceml)
+criceml2 <- mlogit::mlogit(choice ~ as.factor(alt) + frog + bird + fish + location1 + cultivation1 + price | 0 | 0, data = riceml)
 
 
 # Tried clogit instead of mlogit
