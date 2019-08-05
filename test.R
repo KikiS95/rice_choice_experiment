@@ -12,16 +12,13 @@ str(ricedata)
 
 rice <- data.table::data.table(ricedata)
 
-<<<<<<< HEAD
 riceml <- mlogit::mlogit.data(rice, choice = "choice", shape = "long",alt.levels = c("alt1","alt2","alt3"), id.var = "STR",varying=4:16)
 criceml <- mlogit::mlogit(choice ~ frog + bird + fish + location1 + cultivation1 + price | 0 | 0, data =riceml )
 summary(criceml)
 
-criceml2 <- mlogit::mlogit(choice ~ as.factor(alt) + frog + bird + fish + location1 + cultivation1 + price | 0 | 0, data = riceml)
-=======
-criceml <- mlogit(choice ~ frog + bird + fish + location1 + cultivation1 + price | 0 | 0, data = riceml)
-criceml <- mlogit(choice ~ asc + frog + bird + fish + location1 + cultivation1 + price | 0 | 0, data = riceml)
->>>>>>> master
+# criceml2 <- mlogit::mlogit(choice ~ as.factor(alt) + frog + bird + fish + location1 + cultivation1 + price | 0 | 0, data = riceml)
+# criceml <- mlogit(choice ~ frog + bird + fish + location1 + cultivation1 + price | 0 | 0, data = riceml)
+# criceml <- mlogit(choice ~ asc + frog + bird + fish + location1 + cultivation1 + price | 0 | 0, data = riceml)
 
 
 # Tried clogit instead of mlogit
