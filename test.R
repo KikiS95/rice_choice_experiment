@@ -9,10 +9,14 @@ str(ricedata)
 # ricedata$asc <-as.character(ricedata$asc)
 # ricedata$alt <-as.integer(ricedata$alt)
 # str(ricedata)
+library(tidyr)
+library(dplyr)
 
 rice <- data.table::data.table(ricedata)
 
 riceml <- mlogit::mlogit.data(rice, choice = "choice", shape = "long",alt.levels = c("alt1","alt2","alt3"), id.var = "STR",varying=4:16)
+ 
+
 criceml <- mlogit::mlogit(choice ~ frog + bird + fish + location1 + cultivation1 + price | 0 | 0, data =riceml )
 summary(criceml)
 
